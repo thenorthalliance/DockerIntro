@@ -4,7 +4,7 @@ This tutorial is based on the getting started tutorial from www.docs.docker.com.
 You need to have Docker installed and running to continue. This git repo contains a Node web app, and you will in this tutorial learn how to containerize the app using Docker, as well as set up a Volume for storing data.
 Get docker here : https://docs.docker.com/get-docker/
 
-1. Create a file with the name Dockerfile in `/app` and paste in the following content.
+1. Create a file with the name Dockerfile in `/app` and paste in the following content. The file should have no extention.
 
 ```
 FROM #IMAGE
@@ -14,14 +14,14 @@ RUN yarn install --production
 CMD ["node", "src/index.js"]
 EXPOSE 3000
 ```
-Go to `Docker Hub` and find a image with `Node version 18` and `Alpine OS`. Replace #IMAGE  with the image tag of the found image.
+Go to https://hub.docker.com/ and search for an image with `Node version 18` and `Alpine OS`. Replace #IMAGE  with the image tag of the found image.
 
 2. Build a image from your Dockerfile, with the name “getting-started" and tag/version: 1.0.0  
    TIPS: `docker build -t getting-started:1.0.0 .`
 
 Hooray, you have now built your first Docker container!
 
-4. Look at the image. Observer that you have a image with name: `getting_started` with tag: `1.0.0`  
+4. Look at the image. Observe that you have a image with name: `getting_started` with tag: `1.0.0`  
     TIPS: `docker images`
 
 5. Build the container with the run command, give the container a name, and map the ports. The first port you set is on your machine, the port after the `:`  is the port that is mapped into the container. Tell it to use the  `getting-started:1.0.0` image.   
@@ -54,7 +54,7 @@ Hooray, you have now built your first Docker container!
 
 12. Turn out you dont want the new changes you made. List your containers, stop the current container and start the container that was based on the previous version of the image. Refresh 
 your browser where you application is running and observe that it is rolled back to the previous version.  
-   TIPS:`docker ps -a`  
+   TIPS: `docker ps -a`  
    TIPS: `docker stop #containerid`  
    TIPS: `docker start #containerid`
 
@@ -71,14 +71,14 @@ We think it's problematic that the notes we add to the app dissappear every time
 
 
 ## Docker cleanup
-Stop your running containters. Remove your containers. Either one by one or   all of them in one og by uging a  piping command.  
+Stop your running containters.Remove your containers. Either one by one or all of them by using a  piping command.  
    TIPS: `docker stop #containerID`  
    TIPS: `docker rm #containerID`  
    TIPS (will remove everything): `docker rm $(docker ps -a -q)`
    
-List your images and delete the images. Either one by one or all of them in one go by using a piping command.
+List your images and delete the images. Either one by one or all of them by using a piping command.
    TIPS: `docker images`
-   TIPS: `docker rmi #Image ID `
+   TIPS: `docker rmi #imageid `
    TIPS: `docker rmi $(docker images -q)`
 
 
