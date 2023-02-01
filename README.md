@@ -26,7 +26,7 @@ Hooray, you have now built your first Docker container!
 4. Look at the image. Observe that you have a image with name: `getting_started` with tag: `1.0.0`  
     TIPS: `docker images`
 
-5. Build the container with the run command, give the container a name, and map the ports. The first port you set is on your machine, the port after the `:`  is the port that is mapped into the container. Tell it to use the  `getting-started:1.0.0` image.   
+5.Run the container, give the container a name, and map the ports. The first port you set is on your machine, the port after the `:`  is the port that is mapped into the container. Tell it to use the  `getting-started:1.0.0` image.   
     TIPS: `docker run --name getting-started-container -dp 3000:3000 getting-started:1.0.0 .`
 
 6. Check out the application! Try to add a few items to the item-list in the app.  
@@ -52,11 +52,11 @@ Hooray, you have now built your first Docker container!
       TIPS: `docker images`
 
 
-2. Build the container from the latest image. List your containers. Open the application (hit refresh) and observer the changes you made.
+2. Run the container from the latest image. List your containers. Open the application (hit refresh) and observer the changes you made.
    TIPS: `docker run --name getting-started-container2 -dp 3000:3000 getting-started:1.0.1`
    TIPS: `docker ps`
 
-3. Turn out you dont want the new changes you made. List your containers, stop the current container and start the container that was based on the previous version of the image. Refresh 
+3. It turns out you dont want the new changes you made. List your containers, stop the current container and start the container that was based on the previous version of the image. Refresh 
 your browser where you application is running and observe that it is rolled back to the previous version.  
    TIPS: `docker ps -a`  
    TIPS: `docker stop #containerid`  
