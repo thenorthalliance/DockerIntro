@@ -16,7 +16,7 @@ EXPOSE 3000
 ```
 Go to https://hub.docker.com/ and search for an image with `Node version 18` and `Alpine OS`. Replace #IMAGE  with the image tag of the found image.
 
-2. Build a image from your Dockerfile, with the name “getting-started" and tag/version: 1.0.0  
+2. Build a image from your Dockerfile, with the name “getting-started" and tag/version: 1.0.0 . Open up your preferred command-line interface (powershell, cmd , bash etc) and run the docker commands.
    TIPS: `docker build -t getting-started:1.0.0 .`
 
 Hooray, you have now built your first Docker container!
