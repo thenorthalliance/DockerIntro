@@ -1,1 +1,0 @@
-# Her skriver vi oppgave 2
