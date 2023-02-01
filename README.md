@@ -4,6 +4,8 @@ This tutorial is based on the getting started tutorial from www.docs.docker.com.
 You need to have Docker installed and running to continue. This git repo contains a Node web app, and you will in this tutorial learn how to containerize the app using Docker, as well as set up a Volume for storing data.
 Get docker here : https://docs.docker.com/get-docker/
 
+## Build images and containers and control the containers
+
 1. Create a file with the name Dockerfile in `/app` and paste in the following content. The file should have no extention.
 
 ```
@@ -16,7 +18,7 @@ EXPOSE 3000
 ```
 Go to https://hub.docker.com/ and search for an image with `Node version 18` and `Alpine OS`. Replace #IMAGE  with the image tag of the found image.
 
-2. Build a image from your Dockerfile, with the name “getting-started" and tag/version: 1.0.0 . Open up your preferred command-line interface (powershell, cmd , bash etc) and run the docker commands.
+2. Build an image from your Dockerfile, with the name “getting-started" and tag/version: 1.0.0 . Open up your preferred command-line interface (powershell, cmd , bash etc) and run the docker commands.
    TIPS: `docker build -t getting-started:1.0.0 .`
 
 Hooray, you have now built your first Docker container!
@@ -43,21 +45,24 @@ Hooray, you have now built your first Docker container!
 9. You want to reboot the container?   
    TIPS: `docker restart #containerid`
 
-10. You would like to change some of the content in your app. Change the string in line 56 in `src/static/js/app.js` in the projects code. Build a new image with the updated code and update the tag with the new version. List your images to verify that you have two `getting-started` images with different version Tags. 
+## Versioning
+
+1. You would like to change some of the content in your app. Change the string in line 56 in `src/static/js/app.js` in the projects code. Build a new image with the updated code and update the tag with the new version. List your images to verify that you have two `getting-started` images with different version Tags. 
       TIPS: `docker build -t getting-started:1.0.1 . `
       TIPS: `docker images`
 
 
-11. Build the container from the latest image. List your containers. Open the application (hit refresh) and observer the changes you made.
+2. Build the container from the latest image. List your containers. Open the application (hit refresh) and observer the changes you made.
    TIPS: `docker run --name getting-started-container2 -dp 3000:3000 getting-started:1.0.1`
    TIPS: `docker ps`
 
-12. Turn out you dont want the new changes you made. List your containers, stop the current container and start the container that was based on the previous version of the image. Refresh 
+3. Turn out you dont want the new changes you made. List your containers, stop the current container and start the container that was based on the previous version of the image. Refresh 
 your browser where you application is running and observe that it is rolled back to the previous version.  
    TIPS: `docker ps -a`  
    TIPS: `docker stop #containerid`  
    TIPS: `docker start #containerid`
 
+## Volume
 
 We think it's problematic that the notes we add to the app dissappear every time we restart the app :'( Because of this we would like to add a volume, which is a way to store data in docker but outside of the container. Our app uses a simple SQLite database, which store all data in a single file  `/etc/todos/todo.db`. We will connect a volume mount to this location in the container, such that this data is preserved in the volume, and does not dissappeat when the container is stopped.
 1. Create a volume with the name todo-db.  
