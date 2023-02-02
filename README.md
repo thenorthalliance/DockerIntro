@@ -19,7 +19,7 @@ EXPOSE 3000
 ```
 Go to https://hub.docker.com/ and search for an image with `Node version 18` and `Alpine OS`. Replace #IMAGE  with the image tag of the found image.
 
-2. Build an image from your Dockerfile, with the name “getting-started" and tag/version: 1.0.0 . Open up your preferred command-line interface (powershell, cmd , bash etc) and run the docker commands.
+2. Build an image from your Dockerfile, with the name “getting-started" and tag/version: 1.0.0 . Open up your preferred command-line interface (powershell, cmd , bash etc) and run the docker commands.  
    TIPS: `docker build -t getting-started:1.0.0 .`
 
 Hooray, you have now built your first Docker container!
@@ -28,7 +28,7 @@ Hooray, you have now built your first Docker container!
     TIPS: `docker images`
 
 5.Run the container, give the container a name, and map the ports. The first port you set is on your machine, the port after the `:`  is the port that is mapped into the container. Tell it to use the  `getting-started:1.0.0` image.   
-    TIPS: `docker run --name getting-started-container -dp 3000:3000 getting-started:1.0.0 .`
+    TIPS: `docker run --name getting-started-container -dp 3000:3000 getting-started:1.0.0 `
 
 6. Check out the application! Try to add a few items to the item-list in the app.  
    TIPS: http://localhost:3000/
