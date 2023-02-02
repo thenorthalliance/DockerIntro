@@ -9,6 +9,7 @@ Get docker here : https://docs.docker.com/get-docker/
 1. Create a file with the name Dockerfile in `/app` and paste in the following content. The file should have no extention.
 
 ```
+# syntax=docker/dockerfile:1
 FROM #IMAGE
 WORKDIR /app
 COPY . .
@@ -32,7 +33,7 @@ Hooray, you have now built your first Docker container!
 6. Check out the application! Try to add a few items to the item-list in the app.  
    TIPS: http://localhost:3000/
    
-7. Build another container based on the same image. You can use the same command, but will have to set a different port on your machine. Can you aceccess the second container? Why are the items you added in last step not in the item-list of the second application? Stop the second container. It possible to use only the first 3 characters of the container ID in the command to stop the container.   
+7. Start another container based on the same image. You can use the same command, but will have to set a different port on your machine. Can you aceccess the second container? Why are the items you added in last step not in the item-list of the second application? Stop the second container. It possible to use only the first 3 characters of the container ID in the command to stop the container.   
    TIPS: `docker ps`  
    TIPS: `docker stop #containerid`  
 
@@ -81,7 +82,7 @@ Stop your running containters.Remove your containers. Either one by one or all o
    TIPS: `docker rm #containerID`  
    TIPS (will remove everything): `docker rm $(docker ps -a -q)`
    
-List your images and delete the images. Either one by one or all of them by using a piping command.
+List your images and delete them. Either one by one or all of them by using a piping command.
    TIPS: `docker images`
    TIPS: `docker rmi #imageid `
    TIPS: `docker rmi $(docker images -q)`
