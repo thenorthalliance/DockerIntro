@@ -46,6 +46,11 @@ Hooray, you have now built your first Docker container!
 9. You want to reboot the container?   
    TIPS: `docker restart #containerid`
 
+10. The containers have until now been started using a `-d` such that they are being run in detached-mode. This leads to the containers being run as processes in the background. Lets say you are curious to check out the file system of the container. To do this you can start a shell session in your (already running) container with interactive mode. Try it out and see what is actually in your container!
+    TIPS:`docker exec -it #containername sh`
+    TIPS: `exit`
+
+
 ## Versioning
 
 1. You would like to change some of the content in your app. Change the string in line 56 in `src/static/js/app.js` in the projects code. Build a new image with the updated code and update the tag with the new version. List your images to verify that you have two `getting-started` images with different version Tags.  
@@ -53,12 +58,12 @@ Hooray, you have now built your first Docker container!
       TIPS: `docker images`
 
 
-2. Run the container from the latest image. List your containers. Open the application (hit refresh) and observer the changes you made.  
+2. Run a container based on the image with newer version. Open the application in your browser (hit refresh) and observe the changes you made.  
    TIPS: `docker run --name getting-started-container2 -dp 3000:3000 getting-started:1.0.1`  
    TIPS: `docker ps`
 
 3. It turns out you dont want the new changes you made. List your containers, stop the current container and start the container that was based on the previous version of the image. Refresh 
-your browser where you application is running and observe that it is rolled back to the previous version.  
+   your browser where you application is running and observe that it is rolled back to the previous version.  
    TIPS: `docker ps -a`  
    TIPS: `docker stop #containerid`  
    TIPS: `docker start #containerid`
@@ -66,14 +71,15 @@ your browser where you application is running and observe that it is rolled back
 ## Volume
 
 We think it's problematic that the notes we add to the app dissappear every time we restart the app :'( Because of this we would like to add a volume, which is a way to store data in docker but outside of the container. Our app uses a simple SQLite database, which store all data in a single file  `/etc/todos/todo.db`. We will connect a volume mount to this location in the container, such that this data is preserved in the volume, and does not dissappeat when the container is stopped.
+
 1. Create a volume with the name todo-db.  
    TIPS: `docker volume create todo-db`
 
 2. Start a container from the same image as earlier, but where the volume mount you just created is connected to the folder `etc/todos/`.  
-   TIPS: `docker run -dp 3000:3000 --mount type=volume,src=todo-db,target=/etc/todos getting-started` 
+   TIPS: `docker run -dp 3000:3000 --mount type=volume,src=todo-db,target=/etc/todos getting-started:1.0.0` 
 3. Add items to the list, stop the container and start a new one. Are the notes preserved?
 4. If you're curious about where the volume actually stores the data, you can inspect it and see where in the hosts file system the volume actually is located.  
-   TIPS: docker volume inspect todo-db
+   TIPS: `docker volume inspect todo-db`
 
 
 ## Docker cleanup
