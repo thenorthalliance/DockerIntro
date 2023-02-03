@@ -46,8 +46,8 @@ Hooray, you have now built your first Docker container!
 9. You want to reboot the container?   
    TIPS: `docker restart #containerid`
 
-10. The containers have until now been started using a `-d` such that they are being run in detached-mode. This leads to the containers being run as processes in the background. Lets say you are curious to check out the file system of the container. To do this you can start a shell session in your (already running) container with interactive mode. Try it out and see what is actually in your container!
-    TIPS:`docker exec -it #containername sh`
+10. The containers have until now been started using a `-d` such that they are being run in detached-mode. This leads to the containers being run as processes in the background. Lets say you are curious to check out the file system of the container. To do this you can start a shell session in your (already running) container with interactive mode. Try it out and see what is actually in your container!  
+    TIPS: `docker exec -it #containername sh`
     TIPS: `exit`
 
 
