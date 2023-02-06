@@ -98,3 +98,5 @@ List your images and delete them. Either one by one or all of them by using a pi
 Remove the volume.      
    TIPS: `docker rm todo-db`
 
+To remove all docker disk usage inlcuding cache. Check disk usage with command `docker system df`. Then remove all disc usage with `docker system prune -a`
+
