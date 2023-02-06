@@ -87,12 +87,12 @@ We think it's problematic that the notes we add to the app dissappear every time
 Stop your running containters.Remove your containers. Either one by one or all of them by using a  piping command.  
    TIPS: `docker stop #containerID`  
    TIPS: `docker rm #containerID`  
-   TIPS (will remove everything): `docker rm $(docker ps -a -q)`
+   TIPS (warning !will remove all container on your computer): `docker rm $(docker ps -a -q)`   
    
 List your images and delete them. Either one by one or all of them by using a piping command.  
    TIPS: `docker images`  
    TIPS: `docker rmi #imageid `  
-   TIPS: `docker rmi $(docker images -q)`      
+   TIPS (warning! will remove all images on your computer): `docker rmi $(docker images -q)`      
 
 
 Remove the volume.      
