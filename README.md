@@ -59,27 +59,27 @@ Hooray, you have now built your first Docker container!
       TIPS: `docker images`
 
 
-2. First stop all current running containers. Then run a new container based on the image with newer version. Open the application in your browser (hit refresh) and observe the changes you made.  
+2. First stop all current running containers. Then run a new container based on the `getting-started:1.0.1`  image. Open the application in your browser (hit refresh) and observe the changes you made.  
    TIPS: `docker stop #containerid`   
    TIPS: `docker run --name getting-started-container3 -dp 3000:3000 getting-started:1.0.1`  
    TIPS: `docker ps`
 
-3. It turns out you dont want the new changes you made. List your containers, stop the current container and start the container that was based on the previous version of the image and using the same port on your machine.(`getting-started-container`, port:3000) Refresh your browser where you application is running and observe that it is rolled back to the previous version.  
+3. It turns out you dont want the new changes you made. List your containers, stop the current container and start the previous  container that was based on the `getting-started:1.0.0` image and using the same port on your machine.(`getting-started-container`, port:3000) Refresh your browser where you application is running and observe that it is rolled back to the previous version.  
    TIPS: `docker ps -a`  
    TIPS: `docker stop #containerid`  
    TIPS: `docker start #containerid`
 
 ## Volume
 
-We think it's problematic that the notes we add to the app dissappear every time we restart the app :'( Because of this we would like to add a volume, which is a way to store data in docker but outside of the container. Our app uses a simple SQLite database, which store all data in a single file  `/etc/todos/todo.db`. We will connect a volume mount to this location in the container, such that this data is preserved in the volume, and does not dissappeat when the container is stopped.
+We think it's problematic that the notes we add to the app dissappear every time we restart the app :'( Because of this we would like to add a volume, which is a way to store data in docker but outside of the container. Our app uses a simple SQLite database, which store all data in a single file  `/etc/todos/todo.db`. We will connect a volume mount to this location in the container, such that this data is preserved in the volume, and does not dissappeat when the container is stopped. Before beginning this exercise, please stop and remove current containers using `docker stop #containerID` and `docker rm #containerID`.
 
 1. Create a volume with the name todo-db.  
    TIPS: `docker volume create todo-db`
 
-2. Start a container from the same image as earlier, but where the volume mount you just created is connected to the folder `etc/todos/`.  
+2. Start a container from the same image as earlier, but where the volume mount you just created is connected to the folder `etc/todos/`.  on the container.
    TIPS: `docker run -dp 3000:3000 --mount type=volume,src=todo-db,target=/etc/todos getting-started:1.0.0` 
 3. Add items to the list, stop the container and start a new one. Are the notes preserved?
-4. If you're curious about where the volume actually stores the data, you can inspect it and see where in the hosts file system the volume actually is located.  
+4. If you're curious about where the volume actually stores the data, you can inspect it and see where in the hosts file system the volume actually is located. The Mountpoint is the actual location on the disk where the data is stored. Note that on most machines, you will need to have root access to access this directory from the host. But, that’s where it is!    
    TIPS: `docker volume inspect todo-db`
 
 
