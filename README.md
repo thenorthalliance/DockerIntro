@@ -19,7 +19,7 @@ EXPOSE 3000
 ```
 Go to https://hub.docker.com/ and search for an image with `Node version 18` and `Alpine OS`. Replace #IMAGE  with the image tag of the found image.
 
-2. Build an image from your Dockerfile, with the name “getting-started" and tag/version: 1.0.0 . Open up your preferred command-line interface (powershell, cmd , bash etc) and run the docker commands.  
+2. Build an image from your Dockerfile, with the name “getting-started" and tag/version: 1.0.0 . Open up your preferred command-line interface (powershell, cmd , bash etc), change the directory to the `app` directory and run the docker commands.  
    TIPS: `docker build -t getting-started:1.0.0 .`
 
 Hooray, you have now built your first Docker container!
@@ -33,7 +33,7 @@ Hooray, you have now built your first Docker container!
 6. Check out the application! Try to add a few items to the item-list in the app.  
    TIPS: http://localhost:3000/
    
-7. Start another container based on the same image. You can use the same command, but will have to set a different port on your machine. Can you aceccess the second container? Why are the items you added in last step not in the item-list of the second application? Stop the second container. It possible to use only the first 3 characters of the container ID in the command to stop the container.  
+7. Start another container based on the same image. You can use the same command, but will have to set a different port on your machine and use a different name: `getting-started-container2` for the container. Can you aceess the second container? Why are the items you added in last step not in the item-list of the second application? Stop the second container. It possible to use only the first 3 characters of the container ID in the command to stop the container.  
    TIPS: `docker ps`  
    TIPS: `docker stop #containerid`  
 
@@ -58,12 +58,12 @@ Hooray, you have now built your first Docker container!
       TIPS: `docker images`
 
 
-2. Run a container based on the image with newer version. Open the application in your browser (hit refresh) and observe the changes you made.  
-   TIPS: `docker run --name getting-started-container2 -dp 3000:3000 getting-started:1.0.1`  
+2. First stop all current running containers. Then run a new container based on the image with newer version. Open the application in your browser (hit refresh) and observe the changes you made.  
+   TIPS: `docker stop #containerid`   
+   TIPS: `docker run --name getting-started-container3 -dp 3000:3000 getting-started:1.0.1`  
    TIPS: `docker ps`
 
-3. It turns out you dont want the new changes you made. List your containers, stop the current container and start the container that was based on the previous version of the image. Refresh 
-   your browser where you application is running and observe that it is rolled back to the previous version.  
+3. It turns out you dont want the new changes you made. List your containers, stop the current container and start the container that was based on the previous version of the image and using the same port on your machine.(`getting-started-container`, port:3000) Refresh your browser where you application is running and observe that it is rolled back to the previous version.  
    TIPS: `docker ps -a`  
    TIPS: `docker stop #containerid`  
    TIPS: `docker start #containerid`
