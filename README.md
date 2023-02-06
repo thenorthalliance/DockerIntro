@@ -22,13 +22,14 @@ Go to https://hub.docker.com/ and search for an image with `Node version 18` and
 2. Build an image from your Dockerfile, with the name “getting-started" and tag/version: 1.0.0 . Open up your preferred command-line interface (powershell, cmd , bash etc), change the directory to the `app` directory and run the docker commands.  
    TIPS: `docker build -t getting-started:1.0.0 .`
 
-Hooray, you have now built your first Docker container!
 
 4. Look at the image. Observe that you have a image with name: `getting_started` with tag: `1.0.0`  
     TIPS: `docker images`
 
 5. Run the container, give the container a name, and map the ports. The first port you set is on your machine, the port after the `:`  is the port that is mapped into the container. Tell it to use the  `getting-started:1.0.0` image.  
     TIPS: `docker run --name getting-started-container -dp 3000:3000 getting-started:1.0.0 `
+    
+Hooray, you have now built your first Docker container!
 
 6. Check out the application! Try to add a few items to the item-list in the app.  
    TIPS: http://localhost:3000/
