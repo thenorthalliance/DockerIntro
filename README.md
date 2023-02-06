@@ -92,7 +92,9 @@ Stop your running containters.Remove your containers. Either one by one or all o
 List your images and delete them. Either one by one or all of them by using a piping command.  
    TIPS: `docker images`  
    TIPS: `docker rmi #imageid `  
-   TIPS: `docker rmi $(docker images -q)`   
+   TIPS: `docker rmi $(docker images -q)`      
 
 
+Remove the volume.      
+   TIPS: `docker rm todo-db`
 
