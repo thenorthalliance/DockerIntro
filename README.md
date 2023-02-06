@@ -29,7 +29,7 @@ Go to https://hub.docker.com/ and search for an image with `Node version 18` and
 5. Run the container, give the container a name, and map the ports. The first port you set is on your machine, the port after the `:`  is the port that is mapped into the container. Tell it to use the  `getting-started:1.0.0` image.  
     TIPS: `docker run --name getting-started-container -dp 3000:3000 getting-started:1.0.0 `
     
-Hooray, you have now built your first Docker container!
+Hooray, you have now run your first Docker container!
 
 6. Check out the application! Try to add a few items to the item-list in the app.  
    TIPS: http://localhost:3000/
@@ -54,7 +54,7 @@ Hooray, you have now built your first Docker container!
 
 ## Versioning
 
-1. You would like to change some of the content in your app. Change the string in line 56 in `src/static/js/app.js` in the projects code. Build a new image with the updated code and update the tag with the new version. List your images to verify that you have two `getting-started` images with different version Tags.  
+1. You would like to change some of the content in your app. Change the string in line 56 in `src/static/js/app.js` in the projects code. Build a new image with the updated code and update the tag with the new version. List your images to verify that you have two `getting-started` images with different version tags.  
       TIPS: `docker build -t getting-started:1.0.1 . `  
       TIPS: `docker images`
 
@@ -64,7 +64,7 @@ Hooray, you have now built your first Docker container!
    TIPS: `docker run --name getting-started-container3 -dp 3000:3000 getting-started:1.0.1`  
    TIPS: `docker ps`
 
-3. It turns out you dont want the new changes you made. List your containers, stop the current container and start the previous  container that was based on the `getting-started:1.0.0` image and using the same port on your machine.(`getting-started-container`, port:3000) Refresh your browser where you application is running and observe that it is rolled back to the previous version.  
+3. It turns out you don't want the new changes you made. List your containers, stop the current container and start the previous  container that was based on the `getting-started:1.0.0` image and using the same port on your machine(`getting-started-container`, port:3000). Refresh your browser where you application is running and observe that it is rolled back to the previous version.  
    TIPS: `docker ps -a`  
    TIPS: `docker stop #containerid`  
    TIPS: `docker start #containerid`
@@ -76,7 +76,7 @@ We think it's problematic that the notes we add to the app dissappear every time
 1. Create a volume with the name todo-db.  
    TIPS: `docker volume create todo-db`
 
-2. Start a container from the same image as earlier, but where the volume mount you just created is connected to the folder `etc/todos/`.  on the container.
+2. Start a container from the same image as earlier, but where the volume mount you just created is connected to the folder `etc/todos/`  in the container.  
    TIPS: `docker run -dp 3000:3000 --mount type=volume,src=todo-db,target=/etc/todos getting-started:1.0.0` 
 3. Add items to the list, stop the container and start a new one. Are the notes preserved?
 4. If you're curious about where the volume actually stores the data, you can inspect it and see where in the hosts file system the volume actually is located. The Mountpoint is the actual location on the disk where the data is stored. Note that on most machines, you will need to have root access to access this directory from the host. But, that’s where it is!    
