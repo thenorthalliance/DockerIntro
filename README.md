@@ -23,31 +23,31 @@ Go to https://hub.docker.com/ and search for an image with `Node version 18` and
    TIPS: `docker build -t getting-started:1.0.0 .`
 
 
-4. Look at the image. Observe that you have a image with name: `getting_started` with tag: `1.0.0`  
+3. Look at the image. Observe that you have a image with name: `getting_started` with tag: `1.0.0`  
     TIPS: `docker images`
 
-5. Run the container, give the container a name, and map the ports. The first port you set is on your machine, the port after the `:`  is the port that is mapped into the container. Tell it to use the  `getting-started:1.0.0` image.  
+4. Run the container, give the container a name, and map the ports. The first port you set is on your machine, the port after the `:`  is the port that is mapped into the container. Tell it to use the  `getting-started:1.0.0` image.  
     TIPS: `docker run --name getting-started-container -dp 3000:3000 getting-started:1.0.0 `
     
 Hooray, you have now run your first Docker container!
 
-6. Check out the application! Try to add a few items to the item-list in the app.  
+5. Check out the application! Try to add a few items to the item-list in the app.  
    TIPS: http://localhost:3000/
    
-7. Start another container based on the same image. You can use the same command, but will have to set a different port on your machine and use a different name: `getting-started-container2` for the container. Can you aceess the second container? Why are the items you added in last step not in the item-list of the second application? Stop the second container. It possible to use only the first 3 characters of the container ID in the command to stop the container.  
+6. Start another container based on the same image. You can use the same command, but will have to set a different port on your machine and use a different name: `getting-started-container2` for the container. Can you aceess the second container? Why are the items you added in last step not in the item-list of the second application? Stop the second container. It possible to use only the first 3 characters of the container ID in the command to stop the container.  
    TIPS: `docker ps`  
    TIPS: `docker stop #containerid`  
 
-8. Try to access the second container that you stopped (hit refresh).It should time out. Maybe we want to restart this application? No problem. Start the container again.List the containers again and check the status of the container that you just started. Go to the application and hit refresh afain to verify that its up and running.
+7. Try to access the second container that you stopped (hit refresh).It should time out. Maybe we want to restart this application? No problem. Start the container again.List the containers again and check the status of the container that you just started. Go to the application and hit refresh afain to verify that its up and running.
 
    TIPS: `docker ps -a`   
    TIPS: `docker start #containerid`   
    TIPS: `docker ps`
 
-9. You want to reboot the container?   
+8. You want to reboot the container?   
    TIPS: `docker restart #containerid`
 
-10. The containers have until now been started using a `-d` such that they are being run in detached-mode. This leads to the containers being run as processes in the background. Lets say you are curious to check out the file system of the container. To do this you can start a shell session in your (already running) container with interactive mode. Try it out and see what is actually in your container!  
+9. The containers have until now been started using a `-d` such that they are being run in detached-mode. This leads to the containers being run as processes in the background. Lets say you are curious to check out the file system of the container. To do this you can start a shell session in your (already running) container with interactive mode. Try it out and see what is actually in your container!  
     TIPS: `docker exec -it #containername sh`
     TIPS: `exit`
 
@@ -87,7 +87,7 @@ We think it's problematic that the notes we add to the app dissappear every time
 Stop your running containters.Remove your containers. Either one by one or all of them by using a  piping command.  
    TIPS: `docker stop #containerID`  
    TIPS: `docker rm #containerID`  
-   TIPS (warning !will remove all container on your computer): `docker rm $(docker ps -a -q)`   
+   TIPS (warning !will remove all containers on your computer): `docker rm $(docker ps -a -q)`   
    
 List your images and delete them. Either one by one or all of them by using a piping command.  
    TIPS: `docker images`  
@@ -96,7 +96,7 @@ List your images and delete them. Either one by one or all of them by using a pi
 
 
 Remove the volume.      
-   TIPS: `docker rm todo-db`
+   TIPS: `docker volume rm todo-db`
 
 To remove all docker disk usage inlcuding cache. Check disk usage with command `docker system df`. Then remove all disc usage with `docker system prune -a`
 
